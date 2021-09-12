@@ -1,0 +1,80 @@
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 25vw;
+
+  background-color: #101010;
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &Content {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+.profile {
+  &ImgDiv {
+    position: relative;
+  }
+}
+
+.notifications {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background-color: #dc3434;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  top: -12px;
+  right: 100px;
+  border-radius: 50%;
+}
+
+.user {
+  &Name {
+    margin-top: 1rem;
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  &Email {
+    margin-top: 1rem;
+    opacity: 0.6;
+  }
+}
+
+.sidebarNav {
+  &Item {
+    margin: 2rem 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &Link {
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    opacity: 0.6;
+    font-size: 25px;
+  }
+}
+
+.sidebarNavLinkActive {
+  @extend .sidebarNavLink;
+  opacity: 1 !important;
+}

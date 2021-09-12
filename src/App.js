@@ -1,11 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Sidebar from './Components/Sidebar/Sidebar';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello world</h1>
-    </div>
+    <>
+      <Router>
+        <Sidebar />
+      </Router>
+    </>
   );
 }
 
