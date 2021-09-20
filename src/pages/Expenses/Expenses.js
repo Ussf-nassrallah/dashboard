@@ -7,6 +7,8 @@ import { BarChart, Bar, ResponsiveContainer, Cell } from 'recharts';
 import personOne from '../../assets/png/person1.png'
 import personTwo from '../../assets/png/person2.png'
 import personThree from '../../assets/png/person3.png'
+import boxes from '../../assets/png/boxes.png'
+import plant from '../../assets/png/plant.png'
 
 import addIcon from '../../assets/png/addIcon.png'
 import optionIcon from '../../assets/png/menuIcon.png'
@@ -69,6 +71,34 @@ export default function Expenses(){
     },
   ];
 
+  const spendCategories = [
+    {
+      id: 1,
+      category: "Food and Drinks",
+      price: 872.4,
+    },
+    {
+      id: 2,
+      category: "Shopping",
+      price: 1378.2,
+    },
+    {
+      id: 3,
+      category: "Housing",
+      price: 928.5,
+    },
+    {
+      id: 4,
+      category: "Transportation",
+      price: 420.7,
+    },
+    {
+      id: 5,
+      category: "Vehicle",
+      price: 520,
+    },
+  ];
+
   return (
     <main className={styles.expenses}>
       <div className={styles.expensesCard}>
@@ -94,8 +124,8 @@ export default function Expenses(){
             01 - 25 March, 2020
           </p>
 
-          <ResponsiveContainer width="100%" minHeight="12vh">
-            <BarChart width={150} height={40} data={data}>
+          <ResponsiveContainer width="100%" height="20%">
+            <BarChart data={data}>
               <Bar
                 dataKey="uv"
                 fill="rgba(21, 122, 255, .2)"
@@ -119,7 +149,7 @@ export default function Expenses(){
             </button>
           </header>
 
-          <ul>
+          <ul className="expenses">
             {
               todayExpenses.map((expense, index) => (
                 <li key={index} className={styles.expenseItem}>
@@ -150,7 +180,7 @@ export default function Expenses(){
             </button>
           </header>
 
-          <ul>
+          <ul className="expenses">
             {
               previousExpenses.map((expense, index) => (
                 <li key={index} className={styles.expenseItem}>
@@ -173,6 +203,55 @@ export default function Expenses(){
               ))
             }
           </ul>
+        </section>
+
+        <section className={styles.moneyOverview}>
+          <p className={styles.moneyOverviewTitle}>
+            where'd your money go ?
+          </p>
+
+          <ul className={styles.spendCategories}>
+            {
+              spendCategories.map((category, index) => (
+                <li key={index}>
+                  <div className={styles.spendCategory}>
+                    <p className={styles.spendCategoryName}>
+                      {category.category}
+                    </p>
+                    <p className={styles.spendCategoryPrice}>
+                      {category.price.toFixed(2)}
+                    </p>
+                  </div>
+                  <div className={styles.spendCategoryBar}>
+                    <div
+                      style={{
+                        width: `${
+                          (category.price /
+                            spendCategories.reduce(
+                              (acc, current) => acc + current.price,
+                              0
+                            )) *
+                          100
+                        }%`,
+                      }}
+                      className={styles.spendCategoryBarColor}
+                    >
+                      </div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div className={styles.saveMoneyDiv}>
+            <img className={styles.boxes} src={boxes} alt="boxes" />
+            <img className={styles.plant} src={plant} alt="plant" />
+            <p className={styles.saveMoneyTitle}>Save More Money</p>
+            <p className={styles.saveMoneySubtitle}>
+            Do not save what is left after spending, but spend what is left after saving.
+            </p>
+            <button className={styles.saveMoneyCta}>VIEW TIPS</button>
+          </div>
         </section>
       </div>
     </main>
