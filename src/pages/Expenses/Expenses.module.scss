@@ -30,7 +30,13 @@
       justify-content: space-between;
       margin-top: 3rem;
       padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
       border-bottom: 1px solid #dcdcdc;
+    }
+
+    &Title {
+      font-size: 18px;
+      font-weight: 500;
     }
   }
 
@@ -85,4 +91,42 @@
   margin-top: 1rem;
   opacity: 0.5;
   margin-bottom: 2rem;
+}
+
+.expenseItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+
+  &Left {
+    display: flex;
+    align-items: center;
+  }
+
+  &Div {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &Details {
+    margin-left: 1rem;
+  }
+
+  &Title {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  &Time {
+    opacity: 0.5;
+  }
+
+  &Price {
+    font-weight: 600;
+  }
 }

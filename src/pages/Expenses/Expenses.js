@@ -1,147 +1,73 @@
 import React, { useState } from 'react'
 import styles from './Expenses.module.scss'
+import data from '../../data'
 import { BarChart, Bar, ResponsiveContainer, Cell } from 'recharts';
 
+// images
 import personOne from '../../assets/png/person1.png'
 import personTwo from '../../assets/png/person2.png'
 import personThree from '../../assets/png/person3.png'
+
 import addIcon from '../../assets/png/addIcon.png'
 import optionIcon from '../../assets/png/menuIcon.png'
 import cartIcon from '../../assets/svg/cartIcon.svg'
+import transportIcon from '../../assets/svg/transportIcon.svg'
+import houseIcon from '../../assets/svg/houseIcon.svg'
 
-const Expenses = () => {
+export default function Expenses(){
   const [activeIndex, setActiveIndex] = useState(0);
+  const onMouseOver = (data, index) => setActiveIndex(index);
 
-  const data = [
+  const todayExpenses = [
     {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      id: 1,
+      expense: "Grocery",
+      time: "5:12 pm",
+      location: "Belanja di pascar",
+      price: 326.8,
+      icon: cartIcon,
+      iconBackgroundColor: "#32a7e2",
     },
     {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      id: 2,
+      expense: "Transportation",
+      time: "5:12 pm",
+      location: "Naik bus umum",
+      price: 15.0,
+      icon: transportIcon,
+      iconBackgroundColor: "#B548C6",
     },
     {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
+      id: 3,
+      expense: "Housing",
+      time: "5:12 pm",
+      location: "Bayar Listrik",
+      price: 185.75,
+      icon: houseIcon,
+      iconBackgroundColor: "#FF8700",
     },
   ];
-
-  const onMouseOver = (data, index) => setActiveIndex(index);
+  
+  const previousExpenses = [
+    {
+      id: 1,
+      expense: "Food and Drink",
+      time: "5:12 pm",
+      location: "Makan Steak",
+      price: 156.0,
+      icon: cartIcon,
+      iconBackgroundColor: "#DC3434",
+    },
+    {
+      id: 2,
+      expense: "Entertainment",
+      time: "5:12 pm",
+      location: "Nonton Bioskop",
+      price: 35.2,
+      icon: transportIcon,
+      iconBackgroundColor: "#4BA83D",
+    },
+  ];
 
   return (
     <main className={styles.expenses}>
@@ -168,7 +94,7 @@ const Expenses = () => {
             01 - 25 March, 2020
           </p>
 
-          <ResponsiveContainer width="100%" minHeight="9vh">
+          <ResponsiveContainer width="100%" minHeight="12vh">
             <BarChart width={150} height={40} data={data}>
               <Bar
                 dataKey="uv"
@@ -194,26 +120,61 @@ const Expenses = () => {
           </header>
 
           <ul>
-            <li className={styles.expenseItem}>
-              <div className={styles.expenseItemLeft}>
-                <div className={styles.expenseItemDiv}>
-                  <img src={cartIcon} alt="cart" />
-                </div>
-                <div className={styles.expenseItemDetails}>
-                  <p className={styles.expenseItemTitle}>Grocery</p>
-                  <p className={styles.expenseItemTime}>
-                    5:12 pm + Helanja di pasar
-                  </p>
-                </div>
-              </div>
-              <p className={styles.expenseItemPrice}>-326.000</p>
-            </li>
+            {
+              todayExpenses.map((expense, index) => (
+                <li key={index} className={styles.expenseItem}>
+                  <div className={styles.expenseItemLeft}>
+                    <div
+                      style={{ backgroundColor: `${expense.iconBackgroundColor}` }}
+                      className={styles.expenseItemDiv}
+                    >
+                      <img src={expense.icon} alt="cart" />
+                    </div>
+                    <div className={styles.expenseItemDetails}>
+                      <p className={styles.expenseItemTitle}>{expense.expense}</p>
+                      <p className={styles.expenseItemTime}>
+                        {expense.time} + {expense.location}
+                      </p>
+                    </div>
+                  </div>
+                  <p className={styles.expenseItemPrice}>-{expense.price.toFixed(2)}</p>
+                </li>
+              ))
+            }
           </ul>
 
+          <header className={styles.expensesOverviewHeader}>
+            <h4 className={styles.expensesOverviewTitle}>Monday, 23 March 2020</h4>
+            <button>
+              <img src={optionIcon} alt="options" />
+            </button>
+          </header>
+
+          <ul>
+            {
+              previousExpenses.map((expense, index) => (
+                <li key={index} className={styles.expenseItem}>
+                  <div className={styles.expenseItemLeft}>
+                    <div
+                      style={{ backgroundColor: `${expense.iconBackgroundColor}` }}
+                      className={styles.expenseItemDiv}
+                    >
+                      <img src={expense.icon} alt="cart" />
+                    </div>
+                    <div className={styles.expenseItemDetails}>
+                      <p className={styles.expenseItemTitle}>{expense.expense}</p>
+                      <p className={styles.expenseItemTime}>
+                        {expense.time} + {expense.location}
+                      </p>
+                    </div>
+                  </div>
+                  <p className={styles.expenseItemPrice}>-{expense.price.toFixed(2)}</p>
+                </li>
+              ))
+            }
+          </ul>
         </section>
       </div>
     </main>
   )
 }
-
-export default Expenses
