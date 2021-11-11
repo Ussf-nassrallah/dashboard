@@ -1,151 +1,166 @@
+@import "../../Helpers/mixins";
+
 .expenses {
-  width: 75vw;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #101010;
+    width: 75vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #101010;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &Card {
-    background-color: #fff;
-    width: 95%;
-    height: 95%;
-    border-radius: 7px;
-    overflow-y: scroll;
-
-    display: flex;
-
-    &::-webkit-scrollbar {
-      width: 16px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: #fff;
-      border-radius: 7px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 100px;
-      border: 4px solid transparent;
-      background-clip: content-box;
-      background-color: #e4e4e4;
-    }
-  }
-
-  &Overview {
-    // background-color: red;
-    width: 65%;
-    padding: 5rem;
-
-    &Header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 3rem;
-      padding-bottom: 1rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid #dcdcdc;
-    }
-
-    &Title {
-      font-size: 18px;
-      font-weight: 500;
-    }
-  }
-
-  &Header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &Title {
-    font-weight: 600;
-    font-size: 2rem;
-  }
-
-  &Actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &Images {
-    margin-right: -5rem;
-  }
-
-  .person {
-    &One {
-      position: relative;
-      left: -73%;
-      z-index: 3;
-    }
-
-    &Two {
-      position: relative;
-      left: -83%;
-      z-index: 2;
-    }
-
-    &Three {
-      position: relative;
-      left: -93%;
-      z-index: 1;
-    }
-  }
-}
-
-.addIcon {
-  cursor: pointer;
-  // margin-left: -6rem;
-}
-
-.dateRange {
-  margin-top: 1rem;
-  opacity: 0.5;
-  margin-bottom: 2rem;
-}
-
-.expenseItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem;
-
-  &Left {
-    display: flex;
-    align-items: center;
-  }
-
-  &Div {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
 
-  &Details {
-    margin-left: 1rem;
-  }
+    @include breakpoint-down(medium) {
+        width: 100vw;
+    }
 
-  &Title {
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
+    &Card {
+        background-color: #fff;
+        width: 95%;
+        height: 95%;
+        border-radius: 7px;
+        overflow-y: scroll;
 
-  &Time {
+        display: flex;
+
+        @include breakpoint-down(medium) {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        &::-webkit-scrollbar {
+            width: 16px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: #fff;
+            border-radius: 7px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 100px;
+            border: 4px solid transparent;
+            background-clip: content-box;
+            background-color: #e4e4e4;
+        }
+    }
+
+    &Overview {
+        // background-color: red;
+        width: 65%;
+        padding: 5rem;
+
+        @include breakpoint-down(medium) {
+            width: 100%;
+            padding: 3rem 1rem;
+        }
+        &Header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        &Title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+
+    &Header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &Title {
+        font-weight: 600;
+        font-size: 2rem;
+    }
+
+    &Actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &Images {
+        margin-right: -5rem;
+    }
+
+    .person {
+        &One {
+            position: relative;
+            left: -73%;
+            z-index: 3;
+        }
+
+        &Two {
+            position: relative;
+            left: -83%;
+            z-index: 2;
+        }
+
+        &Three {
+            position: relative;
+            left: -93%;
+            z-index: 1;
+        }
+    }
+}
+
+.addIcon {
+    cursor: pointer;
+    // margin-left: -6rem;
+}
+
+.dateRange {
+    margin-top: 1rem;
     opacity: 0.5;
-  }
+    margin-bottom: 2rem;
+}
 
-  &Price {
-    font-weight: 600;
-  }
+.expenseItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+
+    &Left {
+        display: flex;
+        align-items: center;
+    }
+
+    &Div {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &Details {
+        margin-left: 1rem;
+    }
+
+    &Title {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    &Time {
+        opacity: 0.5;
+    }
+
+    &Price {
+        font-weight: 600;
+    }
 }
 
 // ul.expenses:last-child > li:last-child {
@@ -153,96 +168,118 @@
 // }
 
 .moneyOverview {
-  width: 35%;
-  height: 100%;
-  background-color: #f9fafc;
-  padding: 5rem 2rem;
+    width: 35%;
+    height: 100%;
+    background-color: #f9fafc;
+    padding: 5rem 2rem;
 
-  &Title {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 3rem;
-  }
+    &Title {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 3rem;
+    }
+
+    @include breakpoint-down(medium) {
+        width: 100%;
+    }
 }
 
 .spendCategories > li {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .spendCategory {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  &Name {
-    font-weight: 500;
-  }
-
-  &Bar {
-    height: 8px;
-    width: 100%;
-    border-radius: 100px;
-    background-color: #eceff5;
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-
-    &Color {
-      height: 8px;
-      background-color: #31ba96;
-      position: absolute;
-      border-radius: 5px;
+    @include breakpoint-down(medium) {
+        width: 100%;
     }
-  }
+
+    &Name {
+        font-weight: 500;
+    }
+
+    &Bar {
+        height: 8px;
+        width: 100%;
+        border-radius: 100px;
+        background-color: #eceff5;
+        position: relative;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        @include breakpoint-down(medium) {
+            width: 100%;
+        }
+
+        &Color {
+            height: 8px;
+            background-color: #31ba96;
+            position: absolute;
+            border-radius: 5px;
+        }
+    }
 }
 
 .saveMoneyDiv {
-  width: 70%;
-  margin: 0 auto;
-  background-color: #edf0f6;
-  margin-top: 4rem;
-  padding: 2rem;
-  border-radius: 15px;
+    width: 70%;
+    margin: 0 auto;
+    background-color: #edf0f6;
+    margin-top: 4rem;
+    padding: 2rem;
+    border-radius: 15px;
 
-  position: relative;
+    position: relative;
+
+    @include breakpoint-down(medium) {
+        width: 100%;
+    }
 }
 
 .boxes {
-  position: absolute;
-  top: -15px;
-  left: 29px;
+    position: absolute;
+    top: -15px;
+    left: 29px;
 }
 
 .plant {
-  position: absolute;
-  top: -31px;
-  left: 187px;
+    position: absolute;
+    top: -31px;
+    left: 187px;
 }
 
 .saveMoneyTitle {
-  font-weight: 600;
-  margin-top: 4rem;
+    font-weight: 600;
+    margin-top: 4rem;
 }
 
 .saveMoneySubtitle {
-  opacity: 0.7;
-  margin-top: 0.5rem;
-  line-height: 21px;
-  letter-spacing: 0.428571px;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+    line-height: 21px;
+    letter-spacing: 0.428571px;
 }
 
 .saveMoneyCta {
-  cursor: pointer;
-  background-color: #101010;
-  border-radius: 8px;
-  color: white;
-  font-weight: 600;
-  line-height: 19px;
-  letter-spacing: 1.5px;
-  padding: 1rem 2rem;
-  margin-top: 1.5rem;
-  // width: 100%;
+    cursor: pointer;
+    background-color: #101010;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 1.5px;
+    padding: 1rem 2rem;
+    margin-top: 1.5rem;
+    // width: 100%;
 
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+.recharts-responsive-container {
+    @include breakpoint-down(medium) {
+        height: 15% !important;
+    }
 }

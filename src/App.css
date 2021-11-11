@@ -1,7 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
-  font-family: "Poppins", sans-serif;
-  box-sizing: border-box;
-  overflow-x: hidden;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    pointer-events: none;
 }
