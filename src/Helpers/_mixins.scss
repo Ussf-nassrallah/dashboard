@@ -28,16 +28,3 @@ $breakpoints-down: (
         @content;
     }
 }
-
-// visibility
-.hideForMobile {
-    @include breakpoint-down(medium) {
-        display: none !important;
-    }
-}
-
-.hideForDesktop {
-    @include breakpoint-up(medium) {
-        display: none !important;
-    }
-}

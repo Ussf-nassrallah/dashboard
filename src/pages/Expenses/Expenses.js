@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Expenses.module.scss";
+import "../../Helpers/utilities.scss";
 import data from "../../data";
 import { BarChart, Bar, ResponsiveContainer, Cell } from "recharts";
 
@@ -15,8 +16,9 @@ import optionIcon from "../../assets/png/menuIcon.png";
 import cartIcon from "../../assets/svg/cartIcon.svg";
 import transportIcon from "../../assets/svg/transportIcon.svg";
 import houseIcon from "../../assets/svg/houseIcon.svg";
+import { GoThreeBars } from "react-icons/go";
 
-export default function Expenses() {
+export default function Expenses({ sidebar, setSidebar }) {
     const [activeIndex, setActiveIndex] = useState(0);
     const onMouseOver = (data, index) => setActiveIndex(index);
 
@@ -104,7 +106,13 @@ export default function Expenses() {
             <div className={styles.expensesCard}>
                 <section className={styles.expensesOverview}>
                     <header className={styles.expensesHeader}>
-                        <h2 className={styles.expensesTitle}>Expenses</h2>
+                        <h2 className={styles.expensesTitle}>
+                            <GoThreeBars
+                                className={`${styles.icon} hideForDesktop`}
+                                onClick={() => setSidebar(!sidebar)}
+                            />
+                            Expenses
+                        </h2>
 
                         <div className={styles.expensesActions}>
                             <div className={styles.expensesImages}>

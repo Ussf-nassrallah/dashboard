@@ -81,6 +81,17 @@
     &Title {
         font-weight: 600;
         font-size: 2rem;
+
+        @include breakpoint-down(medium) {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .icon {
+        margin-right: 0.5rem;
+        cursor: pointer;
     }
 
     &Actions {
@@ -224,7 +235,7 @@
 }
 
 .saveMoneyDiv {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     background-color: #edf0f6;
     margin-top: 4rem;

@@ -6,12 +6,19 @@ import Expenses from "./pages/Expenses/Expenses";
 
 function App() {
     const [sidebar, setSidebar] = useState(false);
+    console.log(sidebar);
 
     return (
         <>
             <Router>
                 <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
-                <div className="overlay"></div>
+                <div
+                    className={
+                        sidebar
+                            ? "overlay show-overlay hideForDesktop"
+                            : "overlay hideForDesktop"
+                    }
+                ></div>
                 <Expenses sidebar={sidebar} setSidebar={setSidebar} />
             </Router>
         </>

@@ -3,6 +3,7 @@ import styles from "./Sidebar.module.scss";
 import "../../Helpers/utilities.scss";
 import samantha from "../../assets/png/samantha.png";
 import { Link, useLocation } from "react-router-dom";
+import { IoMdClose } from "react-icons/io";
 
 const sidebarNavLinks = [
     "dashboard",
@@ -13,12 +14,22 @@ const sidebarNavLinks = [
     "settings",
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ sidebar, setSidebar }) => {
     const location = useLocation();
 
     return (
-        <section className="show">
-            <aside className={styles.sidebar}>
+        <section>
+            <aside
+                className={
+                    sidebar
+                        ? `${styles.sidebar} ${styles.sidebarOpen}`
+                        : `${styles.sidebar}`
+                }
+            >
+                <IoMdClose
+                    className={`${styles.sidebarCloseIcon} hideForDesktop`}
+                    onClick={() => setSidebar(!sidebar)}
+                />
                 <div className={styles.sidebarContent}>
                     <div className={styles.profileDetailes}>
                         <div className={styles.profileImgDiv}>

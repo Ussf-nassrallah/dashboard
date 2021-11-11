@@ -1,7 +1,18 @@
-.hide {
-    display: none;
+@import "../Helpers/mixins";
+
+// visibility
+.hideForMobile {
+    @include breakpoint-down(medium) {
+        display: none !important;
+    }
 }
 
-.show {
-    display: flex !important;
+.hideForDesktop {
+    @include breakpoint-up(medium) {
+        display: none !important;
+    }
+}
+
+.open {
+    transform: translateX(100);
 }
